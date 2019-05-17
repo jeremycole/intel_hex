@@ -15,4 +15,6 @@ Gem::Specification.new do |s|
   s.files = Dir.glob("{bin,lib}/**/*") + %w[LICENSE.md README.md]
   s.executables = [ 'intel_hex_reader' ]
   s.require_path = 'lib'
+
+  s.add_development_dependency('rspec')
 end
