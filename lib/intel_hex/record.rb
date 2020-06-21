@@ -144,7 +144,7 @@ module IntelHex
 
     def validate_offset
       raise InvalidOffsetError.new("Offset #{offset} is negative") unless offset >= 0
-      raise InvalidOffsetError.new("Offset #{offset} is too large") unless offset <= 255
+      raise InvalidOffsetError.new("Offset #{offset} is too large") unless offset < 2**16
     end
 
     def validate_length
