@@ -12,39 +12,39 @@ RSpec.describe [IntelHex::Record, :ssa] do
 
   it "handles assignment of a value" do
     record = IntelHex::Record.new(:ssa)
-    record.ssa = 0x1234
+    record.ssa = 0x12345678
 
-    expect(record.ssa).to eq 0x1234
-    expect(record.length).to eq 2
+    expect(record.ssa).to eq 0x12345678
+    expect(record.length).to eq 4
     expect(record.offset).to eq 0
-    expect(record.data).to eq [0x12, 0x34]
-    expect(record.checksum).to eq 181
+    expect(record.data).to eq [0x12, 0x34, 0x56, 0x78]
+    expect(record.checksum).to eq 229
   end
 
   it "can create a record from a value" do
-    record = IntelHex::Record.ssa(0x1234)
+    record = IntelHex::Record.ssa(0x12345678)
 
     expect(record).to be_an_instance_of IntelHex::Record
     expect(record.type).to eq :ssa
-    expect(record.ssa).to eq 0x1234
+    expect(record.ssa).to eq 0x12345678
   end
 
   it "generates the correct ASCII record" do
-    record = IntelHex::Record.ssa(0x1234)
+    record = IntelHex::Record.ssa(0x12345678)
 
-    expect(record.to_ascii).to eq ":020000031234B5"
+    expect(record.to_ascii).to eq ":0400000312345678E5"
   end
 
   it "parses an ASCII record" do
-    record = IntelHex::Record.parse(":020000031234B5")
+    record = IntelHex::Record.parse(":0400000312345678E5")
 
     expect(record).to be_an_instance_of IntelHex::Record
     expect(record.type).to eq :ssa
-    expect(record.ssa).to eq 0x1234
-    expect(record.length).to eq 2
+    expect(record.ssa).to eq 0x12345678
+    expect(record.length).to eq 4
     expect(record.offset).to eq 0
-    expect(record.data).to eq [0x12, 0x34]
-    expect(record.checksum).to eq 181
+    expect(record.data).to eq [0x12, 0x34, 0x56, 0x78]
+    expect(record.checksum).to eq 229
     expect(record.valid?).to be true
   end
 end

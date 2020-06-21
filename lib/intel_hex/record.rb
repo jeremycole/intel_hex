@@ -22,7 +22,7 @@ module IntelHex
       data: (1..255),
       eof: 0,
       esa: 2,
-      ssa: 2,
+      ssa: 4,
       ela: 2,
       sla: 4,
     }
@@ -216,12 +216,12 @@ module IntelHex
     end
 
     alias_method :esa, :data_to_uint16
-    alias_method :ssa, :data_to_uint16
+    alias_method :ssa, :data_to_uint32
     alias_method :ela, :data_to_uint16
     alias_method :sla, :data_to_uint32
 
     alias_method :esa=, :uint16_to_data
-    alias_method :ssa=, :uint16_to_data
+    alias_method :ssa=, :uint32_to_data
     alias_method :ela=, :uint16_to_data
     alias_method :sla=, :uint32_to_data
   end
