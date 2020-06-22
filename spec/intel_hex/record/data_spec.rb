@@ -1,5 +1,5 @@
 RSpec.describe [IntelHex::Record, :data] do
-  it "can create an empty record" do
+  it 'can create an empty record' do
     record = IntelHex::Record.new(:data)
 
     expect(record).to be_an_instance_of IntelHex::Record
@@ -10,7 +10,7 @@ RSpec.describe [IntelHex::Record, :data] do
     expect(record.checksum).to eq 0
   end
 
-  it "handles assignment of an array" do
+  it 'handles assignment of an array' do
     record = IntelHex::Record.new(:data)
     record.data = [1, 2, 3]
 
@@ -19,7 +19,7 @@ RSpec.describe [IntelHex::Record, :data] do
     expect(record.checksum).to eq 247
   end
 
-  it "can create a record from an array" do
+  it 'can create a record from an array' do
     record = IntelHex::Record.data([1, 2, 3])
 
     expect(record).to be_an_instance_of IntelHex::Record
@@ -30,14 +30,14 @@ RSpec.describe [IntelHex::Record, :data] do
     expect(record.checksum).to eq 247
   end
 
-  it "generates the correct ASCII record" do
+  it 'generates the correct ASCII record' do
     record = IntelHex::Record.data([1, 2, 3])
 
-    expect(record.to_ascii).to eq ":03000000010203F7"
+    expect(record.to_ascii).to eq ':03000000010203F7'
   end
 
-  it "parses an ASCII record" do
-    record = IntelHex::Record.parse(":03000000010203F7")
+  it 'parses an ASCII record' do
+    record = IntelHex::Record.parse(':03000000010203F7')
 
     expect(record).to be_an_instance_of IntelHex::Record
     expect(record.type).to eq :data

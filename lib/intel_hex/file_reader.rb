@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module IntelHex
   class FileReader
     def initialize(filename)
@@ -12,7 +14,7 @@ module IntelHex
 
     def each_record
       return to_enum(:each_record) unless block_given?
-  
+
       file = File.open(@filename, 'r')
 
       begin
@@ -25,10 +27,10 @@ module IntelHex
 
       nil
     end
-  
+
     def each_byte_with_address
       return to_enum(:each_byte_with_address) unless block_given?
-  
+
       each_record do |record|
         case record.type
         when :data

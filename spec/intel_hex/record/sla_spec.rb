@@ -1,5 +1,5 @@
 RSpec.describe [IntelHex::Record, :sla] do
-  it "can create an empty record" do
+  it 'can create an empty record' do
     record = IntelHex::Record.new(:sla)
 
     expect(record).to be_an_instance_of IntelHex::Record
@@ -10,7 +10,7 @@ RSpec.describe [IntelHex::Record, :sla] do
     expect(record.checksum).to eq 251
   end
 
-  it "handles assignment of a value" do
+  it 'handles assignment of a value' do
     record = IntelHex::Record.new(:sla)
     record.sla = 0x12345678
 
@@ -21,7 +21,7 @@ RSpec.describe [IntelHex::Record, :sla] do
     expect(record.checksum).to eq 227
   end
 
-  it "can create a record from a value" do
+  it 'can create a record from a value' do
     record = IntelHex::Record.sla(0x12345678)
 
     expect(record).to be_an_instance_of IntelHex::Record
@@ -29,14 +29,14 @@ RSpec.describe [IntelHex::Record, :sla] do
     expect(record.sla).to eq 0x12345678
   end
 
-  it "generates the correct ASCII record" do
+  it 'generates the correct ASCII record' do
     record = IntelHex::Record.sla(0x12345678)
 
-    expect(record.to_ascii).to eq ":0400000512345678E3"
+    expect(record.to_ascii).to eq ':0400000512345678E3'
   end
 
-  it "parses an ASCII record" do
-    record = IntelHex::Record.parse(":0400000512345678E3")
+  it 'parses an ASCII record' do
+    record = IntelHex::Record.parse(':0400000512345678E3')
 
     expect(record).to be_an_instance_of IntelHex::Record
     expect(record.type).to eq :sla
