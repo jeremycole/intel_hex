@@ -4,10 +4,15 @@ module IntelHex
   class MisformattedFileError < RuntimeError; end
 
   class ValidationError < StandardError; end
+
   class InvalidTypeError < ValidationError; end
+
   class InvalidLengthError < ValidationError; end
+
   class InvalidOffsetError < ValidationError; end
+
   class InvalidDataError < ValidationError; end
+
   class InvalidChecksumError < ValidationError; end
 
   class Record
@@ -40,7 +45,7 @@ module IntelHex
 
       offset = line[3..6].to_i(16)
       type = TYPES[line[7..8].to_i(16)]
-      data = line[9...data_end].split('').each_slice(2).map { |a| a.join.to_i(16) }
+      data = line[9...data_end].chars.each_slice(2).map { |a| a.join.to_i(16) }
       checksum = line[data_end..(data_end + 2)].to_i(16)
 
       Record.new(type, length, offset, data, checksum, line: line, validate: true)
@@ -58,7 +63,7 @@ module IntelHex
 
     def self.type_with_value(type, value)
       record = Record.new(type)
-      record.send((type.to_s + '=').to_sym, value)
+      record.send("#{type}=".to_sym, value)
       record
     end
 
@@ -78,12 +83,7 @@ module IntelHex
       type_with_value(:sla, value)
     end
 
-    attr_reader :length
-    attr_reader :offset
-    attr_reader :type
-    attr_reader :data
-    attr_reader :checksum
-    attr_reader :line
+    attr_reader :length, :offset, :type, :data, :checksum, :line
 
     # rubocop:disable Metrics/ParameterLists
     def initialize(type, length = 0, offset = 0, data = [], checksum = nil, line: nil, validate: false)
@@ -100,7 +100,7 @@ module IntelHex
     # rubocop:enable Metrics/ParameterLists
 
     def data_s
-      '[' + data.map { |b| '%02x' % b }.join(' ') + ']'
+      "[#{data.map { |b| '%02x' % b }.join(' ')}]"
     end
 
     def value_s
