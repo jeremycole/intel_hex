@@ -7,7 +7,6 @@ require 'intel_hex/version'
 Gem::Specification.new do |s|
   s.name        = 'intel_hex'
   s.version     = IntelHex::VERSION
-  s.date        = Time.now.strftime('%Y-%m-%d')
   s.summary     = 'Parser for Intel hex files'
   s.license     = 'BSD-3-Clause'
   s.description = 'An Intel hex file parser for (e.g. AVR) working with firmware files'
@@ -18,5 +17,9 @@ Gem::Specification.new do |s|
   s.executables = %w[intel_hex_reader]
   s.require_path = 'lib'
 
+  s.required_ruby_version = '>= 2.6', '< 4'
+
   s.add_development_dependency('rspec')
+  s.add_development_dependency('rubocop')
+  s.add_development_dependency('rubocop-rspec')
 end
