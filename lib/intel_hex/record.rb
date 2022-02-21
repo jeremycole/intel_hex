@@ -41,7 +41,7 @@ module IntelHex
       raise MisformattedFileError, 'Line length incorrect' unless line.size >= (1 + 2 + 4 + 2)
 
       length = line[1..2].to_i(16)
-      data_end = (9 + length * 2)
+      data_end = (9 + (length * 2))
 
       offset = line[3..6].to_i(16)
       type = TYPES[line[7..8].to_i(16)]
