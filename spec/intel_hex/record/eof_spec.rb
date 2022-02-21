@@ -1,8 +1,8 @@
-RSpec.describe [IntelHex::Record, :eof] do
-  it 'can create a record' do
-    record = IntelHex::Record.new(:eof)
+RSpec.describe IntelHex::Record::Eof do
+  it "can create a record" do
+    record = IntelHex::Record.eof
 
-    expect(record).to be_an_instance_of IntelHex::Record
+    expect(record).to be_an_instance_of IntelHex::Record::Eof
     expect(record.type).to eq :eof
     expect(record.length).to eq 0
     expect(record.offset).to eq 0
@@ -10,10 +10,10 @@ RSpec.describe [IntelHex::Record, :eof] do
     expect(record.checksum).to eq 0xff
   end
 
-  it 'can create a record' do
+  it "can create a record" do
     record = IntelHex::Record.eof
 
-    expect(record).to be_an_instance_of IntelHex::Record
+    expect(record).to be_an_instance_of IntelHex::Record::Eof
     expect(record.type).to eq :eof
     expect(record.length).to eq 0
     expect(record.offset).to eq 0
@@ -21,16 +21,16 @@ RSpec.describe [IntelHex::Record, :eof] do
     expect(record.checksum).to eq 0xff
   end
 
-  it 'generates the correct ASCII record' do
+  it "generates the correct ASCII record" do
     record = IntelHex::Record.eof
 
-    expect(record.to_ascii).to eq ':00000001FF'
+    expect(record.to_ascii).to eq ":00000001FF"
   end
 
-  it 'parses an ASCII record' do
-    record = IntelHex::Record.parse(':00000001FF')
+  it "parses an ASCII record" do
+    record = IntelHex::Record.parse(":00000001FF")
 
-    expect(record).to be_an_instance_of IntelHex::Record
+    expect(record).to be_an_instance_of IntelHex::Record::Eof
     expect(record.type).to eq :eof
     expect(record.length).to eq 0
     expect(record.offset).to eq 0

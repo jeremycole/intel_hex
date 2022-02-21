@@ -1,8 +1,8 @@
-RSpec.describe [IntelHex::Record, :esa] do
-  it 'can create an empty record' do
-    record = IntelHex::Record.new(:esa)
+RSpec.describe IntelHex::Record::Esa do
+  it "can create an empty record" do
+    record = IntelHex::Record.esa
 
-    expect(record).to be_an_instance_of IntelHex::Record
+    expect(record).to be_an_instance_of IntelHex::Record::Esa
     expect(record.type).to eq :esa
     expect(record.length).to eq 0
     expect(record.offset).to eq 0
@@ -10,8 +10,8 @@ RSpec.describe [IntelHex::Record, :esa] do
     expect(record.checksum).to eq 254
   end
 
-  it 'handles assignment of a value' do
-    record = IntelHex::Record.new(:esa)
+  it "handles assignment of a value" do
+    record = IntelHex::Record.esa
     record.esa = 0x1234
 
     expect(record.esa).to eq 0x1234
@@ -21,24 +21,24 @@ RSpec.describe [IntelHex::Record, :esa] do
     expect(record.checksum).to eq 182
   end
 
-  it 'can create a record from a value' do
+  it "can create a record from a value" do
     record = IntelHex::Record.esa(0x1234)
 
-    expect(record).to be_an_instance_of IntelHex::Record
+    expect(record).to be_an_instance_of IntelHex::Record::Esa
     expect(record.type).to eq :esa
     expect(record.esa).to eq 0x1234
   end
 
-  it 'generates the correct ASCII record' do
+  it "generates the correct ASCII record" do
     record = IntelHex::Record.esa(0x1234)
 
-    expect(record.to_ascii).to eq ':020000021234B6'
+    expect(record.to_ascii).to eq ":020000021234B6"
   end
 
-  it 'parses an ASCII record' do
-    record = IntelHex::Record.parse(':020000021234B6')
+  it "parses an ASCII record" do
+    record = IntelHex::Record.parse(":020000021234B6")
 
-    expect(record).to be_an_instance_of IntelHex::Record
+    expect(record).to be_an_instance_of IntelHex::Record::Esa
     expect(record.type).to eq :esa
     expect(record.esa).to eq 0x1234
     expect(record.length).to eq 2

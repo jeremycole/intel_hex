@@ -1,4 +1,4 @@
-RSpec.describe 'blink.hex' do
+RSpec.describe "blink.hex" do
   before :all do
     @records = [
       { type: :data, offset: 0x0000, length: 0x10, checksum: 0x82 },
@@ -16,8 +16,8 @@ RSpec.describe 'blink.hex' do
     ].freeze
   end
 
-  it 'parses blink.hex correctly' do
-    blink_hex = File.join(File.join(__dir__, '../../data'), 'blink.hex')
+  it "parses blink.hex correctly" do
+    blink_hex = File.join(File.join(__dir__, "../../data"), "blink.hex")
     intel_hex_file = IntelHex::FileReader.new(blink_hex)
     records = intel_hex_file.each_record.to_a
 
