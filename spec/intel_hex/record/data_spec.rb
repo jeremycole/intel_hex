@@ -1,8 +1,8 @@
-RSpec.describe [IntelHex::Record, :data] do
-  it 'can create an empty record' do
-    record = IntelHex::Record.new(:data)
+RSpec.describe IntelHex::Record::Data do
+  it "can create an empty record" do
+    record = IntelHex::Record.data
 
-    expect(record).to be_an_instance_of IntelHex::Record
+    expect(record).to be_an_instance_of IntelHex::Record::Data
     expect(record.type).to eq :data
     expect(record.length).to eq 0
     expect(record.offset).to eq 0
@@ -10,8 +10,8 @@ RSpec.describe [IntelHex::Record, :data] do
     expect(record.checksum).to eq 0
   end
 
-  it 'handles assignment of an array' do
-    record = IntelHex::Record.new(:data)
+  it "handles assignment of an array" do
+    record = IntelHex::Record.data
     record.data = [1, 2, 3]
 
     expect(record.length).to eq 3
@@ -19,10 +19,10 @@ RSpec.describe [IntelHex::Record, :data] do
     expect(record.checksum).to eq 247
   end
 
-  it 'can create a record from an array' do
+  it "can create a record from an array" do
     record = IntelHex::Record.data([1, 2, 3])
 
-    expect(record).to be_an_instance_of IntelHex::Record
+    expect(record).to be_an_instance_of IntelHex::Record::Data
     expect(record.type).to eq :data
     expect(record.length).to eq 3
     expect(record.offset).to eq 0
@@ -30,16 +30,16 @@ RSpec.describe [IntelHex::Record, :data] do
     expect(record.checksum).to eq 247
   end
 
-  it 'generates the correct ASCII record' do
+  it "generates the correct ASCII record" do
     record = IntelHex::Record.data([1, 2, 3])
 
-    expect(record.to_ascii).to eq ':03000000010203F7'
+    expect(record.to_ascii).to eq ":03000000010203F7"
   end
 
-  it 'parses an ASCII record' do
-    record = IntelHex::Record.parse(':03000000010203F7')
+  it "parses an ASCII record" do
+    record = IntelHex::Record.parse(":03000000010203F7")
 
-    expect(record).to be_an_instance_of IntelHex::Record
+    expect(record).to be_an_instance_of IntelHex::Record::Data
     expect(record.type).to eq :data
     expect(record.length).to eq 3
     expect(record.offset).to eq 0

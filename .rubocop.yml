@@ -7,13 +7,17 @@ Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: consistent_comma
 Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: consistent_comma
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
 Style/FormatString:
-  Enabled: false
+  Enabled: true
 Style/FormatStringToken:
   Enabled: false
 Style/Documentation:
   Enabled: false
 Metrics/ClassLength:
+  Enabled: false
+Metrics/ParameterLists:
   Enabled: false
 Metrics/MethodLength:
   Enabled: false

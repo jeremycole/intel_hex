@@ -1,36 +1,38 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require 'optparse'
-require 'intel_hex'
-require 'pp'
+require "optparse"
+require "intel_hex"
+require "pp"
 
 @options = {
   file: nil,
 }
 
 OptionParser.new do |opts|
-  opts.on('--help', 'Print this help.') do
+  opts.on("--help", "Print this help.") do
     puts
     puts opts
     puts
     exit
   end
-  opts.on('-f', '--filename=FILE', 'Load the specified file.') do |o|
+  opts.on("-f", "--filename=FILE", "Load the specified file.") do |o|
     @options[:file] = o
   end
 end.parse!
 
-raise 'No file specified' unless @options[:file]
+raise "No file specified" unless @options[:file]
 
 intel_hex_file = IntelHex::FileReader.new(@options[:file])
 
 intel_hex_file.each_record do |record|
-  puts 'Record type=%-4s offset=%-4d length=%-4d checksum=%-4d %s' % [
+  puts format(
+    "Record type=%-4s offset=%-4d length=%-4d checksum=%-4d %s%s",
     record.type,
     record.offset,
     record.length,
     record.checksum,
-    record.value_s,
-  ]
+    record.value ? "#{record.type}=" : "",
+    record.value_s
+  )
 end
