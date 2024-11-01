@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.executables = %w[intel_hex_reader]
   s.require_path = "lib"
 
-  s.required_ruby_version = ">= 2.6", "< 4"
+  s.required_ruby_version = ">= 3.0", "< 4"
 
   s.metadata["rubygems_mfa_required"] = "true"
 end
