@@ -2,7 +2,7 @@ RSpec.describe IntelHex::Record::Esa do
   it "can create an empty record" do
     record = IntelHex::Record.esa
 
-    expect(record).to be_an_instance_of IntelHex::Record::Esa
+    expect(record).to be_an_instance_of described_class
     expect(record.type).to eq :esa
     expect(record.length).to eq 0
     expect(record.offset).to eq 0
@@ -24,7 +24,7 @@ RSpec.describe IntelHex::Record::Esa do
   it "can create a record from a value" do
     record = IntelHex::Record.esa(0x1234)
 
-    expect(record).to be_an_instance_of IntelHex::Record::Esa
+    expect(record).to be_an_instance_of described_class
     expect(record.type).to eq :esa
     expect(record.value).to eq 0x1234
   end
@@ -38,7 +38,7 @@ RSpec.describe IntelHex::Record::Esa do
   it "parses an ASCII record" do
     record = IntelHex::Record.parse(":020000021234B6")
 
-    expect(record).to be_an_instance_of IntelHex::Record::Esa
+    expect(record).to be_an_instance_of described_class
     expect(record.type).to eq :esa
     expect(record.value).to eq 0x1234
     expect(record.length).to eq 2
