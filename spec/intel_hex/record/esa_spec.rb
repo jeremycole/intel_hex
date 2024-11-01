@@ -12,9 +12,9 @@ RSpec.describe IntelHex::Record::Esa do
 
   it "handles assignment of a value" do
     record = IntelHex::Record.esa
-    record.esa = 0x1234
+    record.value = 0x1234
 
-    expect(record.esa).to eq 0x1234
+    expect(record.value).to eq 0x1234
     expect(record.length).to eq 2
     expect(record.offset).to eq 0
     expect(record.data).to eq [0x12, 0x34]
@@ -26,7 +26,7 @@ RSpec.describe IntelHex::Record::Esa do
 
     expect(record).to be_an_instance_of IntelHex::Record::Esa
     expect(record.type).to eq :esa
-    expect(record.esa).to eq 0x1234
+    expect(record.value).to eq 0x1234
   end
 
   it "generates the correct ASCII record" do
@@ -40,7 +40,7 @@ RSpec.describe IntelHex::Record::Esa do
 
     expect(record).to be_an_instance_of IntelHex::Record::Esa
     expect(record.type).to eq :esa
-    expect(record.esa).to eq 0x1234
+    expect(record.value).to eq 0x1234
     expect(record.length).to eq 2
     expect(record.offset).to eq 0
     expect(record.data).to eq [0x12, 0x34]

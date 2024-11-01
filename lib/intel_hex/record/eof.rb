@@ -3,10 +3,6 @@
 module IntelHex
   class Record
     class Eof < Record
-      def initialize(length = 0, offset = 0, data = [], checksum = nil, line: nil, validate: false)
-        super
-      end
-
       def self.type_id
         1
       end

@@ -12,9 +12,9 @@ RSpec.describe IntelHex::Record::Sla do
 
   it "handles assignment of a value" do
     record = IntelHex::Record.sla
-    record.sla = 0x12345678
+    record.value = 0x12345678
 
-    expect(record.sla).to eq 0x12345678
+    expect(record.value).to eq 0x12345678
     expect(record.length).to eq 4
     expect(record.offset).to eq 0
     expect(record.data).to eq [0x12, 0x34, 0x56, 0x78]
@@ -26,7 +26,7 @@ RSpec.describe IntelHex::Record::Sla do
 
     expect(record).to be_an_instance_of IntelHex::Record::Sla
     expect(record.type).to eq :sla
-    expect(record.sla).to eq 0x12345678
+    expect(record.value).to eq 0x12345678
   end
 
   it "generates the correct ASCII record" do
@@ -40,7 +40,7 @@ RSpec.describe IntelHex::Record::Sla do
 
     expect(record).to be_an_instance_of IntelHex::Record::Sla
     expect(record.type).to eq :sla
-    expect(record.sla).to eq 0x12345678
+    expect(record.value).to eq 0x12345678
     expect(record.length).to eq 4
     expect(record.offset).to eq 0
     expect(record.data).to eq [0x12, 0x34, 0x56, 0x78]
