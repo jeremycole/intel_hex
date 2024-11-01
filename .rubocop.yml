@@ -31,3 +31,7 @@ Metrics/PerceivedComplexity:
   Enabled: false
 Style/SymbolArray:
   MinSize: 1
+RSpec/MultipleExpectations:
+  Enabled: false
+RSpec/ExampleLength:
+  Enabled: false

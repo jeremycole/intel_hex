@@ -1,4 +1,4 @@
-RSpec.describe "blink.hex" do
+RSpec.describe "blink.hex" do # rubocop:disable RSpec/DescribeClass
   let(:expected_records) do
     [
       { type: :data, offset: 0x0000, length: 0x10, checksum: 0x82 },
