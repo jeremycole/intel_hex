@@ -31,14 +31,14 @@ module IntelHex
         case record.type
         when :data
           record.each_byte_with_address do |byte, offset|
-            yield byte, (@address_base + offset) & @address_mask
+            yield byte, (@address_base + (offset & 0xffff)) & @address_mask
           end
         when :esa
-          @address_base = record.esa << 4   # bits 4..19 of address
-          @address_mask = 0xfffff           # 20 bit address size
+          @address_base = record.value << 4   # bits 4..19 of address
+          @address_mask = 0xfffff             # 20 bit address size
         when :ela
-          @address_base = record.ela << 16  # bits 16..31 of address
-          @address_mask = 0xffffffff        # 32 bit address size
+          @address_base = record.value << 16  # bits 16..31 of address
+          @address_mask = 0xffffffff          # 32 bit address size
         end
       end
 

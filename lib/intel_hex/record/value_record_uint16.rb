@@ -7,16 +7,14 @@ module IntelHex
         2
       end
 
+      # Retrieve the 16-bit unsigned integer value from the record.
       def value
-        data_to_uint16
+        (data[0] << 8) | data[1]
       end
 
-      def data_to_uint16(offset = 0)
-        (data[offset + 0] << 8) | data[offset + 1]
-      end
-
-      def uint16_to_data(value, offset = 0)
-        data[(offset...(offset + 2))] = [
+      # Store a 32-bit unsigned integer value in the record.
+      def value=(value)
+        data[0..1] = [
           (value & 0xff00) >> 8,
           value & 0x00ff,
         ]
