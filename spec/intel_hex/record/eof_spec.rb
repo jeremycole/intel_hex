@@ -2,7 +2,7 @@ RSpec.describe IntelHex::Record::Eof do
   it "can create a record" do
     record = IntelHex::Record.eof
 
-    expect(record).to be_an_instance_of IntelHex::Record::Eof
+    expect(record).to be_an_instance_of described_class
     expect(record.type).to eq :eof
     expect(record.length).to eq 0
     expect(record.offset).to eq 0
@@ -13,7 +13,7 @@ RSpec.describe IntelHex::Record::Eof do
   it "can create a record" do
     record = IntelHex::Record.eof
 
-    expect(record).to be_an_instance_of IntelHex::Record::Eof
+    expect(record).to be_an_instance_of described_class
     expect(record.type).to eq :eof
     expect(record.length).to eq 0
     expect(record.offset).to eq 0
@@ -30,7 +30,7 @@ RSpec.describe IntelHex::Record::Eof do
   it "parses an ASCII record" do
     record = IntelHex::Record.parse(":00000001FF")
 
-    expect(record).to be_an_instance_of IntelHex::Record::Eof
+    expect(record).to be_an_instance_of described_class
     expect(record.type).to eq :eof
     expect(record.length).to eq 0
     expect(record.offset).to eq 0
