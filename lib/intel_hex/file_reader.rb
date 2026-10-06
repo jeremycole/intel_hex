@@ -11,9 +11,7 @@ module IntelHex
     def each_record
       return enum_for(:each_record) unless block_given?
 
-      file = File.open(@filename, "r")
-
-      begin
+      File.open(@filename, "r") do |file|
         file.each_line do |line|
           yield Record.parse(line.chomp)
         end
