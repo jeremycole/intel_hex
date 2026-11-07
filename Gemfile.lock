@@ -65,11 +65,14 @@ GEM
       regexp_parser (>= 2.0)
       rubocop (~> 1.86, >= 1.86.2)
     ruby-progressbar (1.13.0)
+    rubydex (0.4.4)
     rubydex (0.4.4-x86_64-darwin)
+    rubydex (0.4.4-x86_64-linux)
     sorbet (0.6.13602)
       sorbet-static (= 0.6.13602)
     sorbet-runtime (0.6.13602)
     sorbet-static (0.6.13602-universal-darwin)
+    sorbet-static (0.6.13602-x86_64-linux)
     sorbet-static-and-runtime (0.6.13602)
       sorbet (= 0.6.13602)
       sorbet-runtime (= 0.6.13602)
@@ -102,6 +105,7 @@ GEM
 PLATFORMS
   x86_64-darwin-24
   x86_64-darwin-25
+  x86_64-linux
 
 DEPENDENCIES
   intel_hex!
