@@ -207,7 +207,7 @@ module IntelHex
     end
 
     sig { returns(T::Boolean) }
-    def validate
+    def validate # rubocop:disable Naming/PredicateMethod
       validate_length
       validate_offset
       validate_data
