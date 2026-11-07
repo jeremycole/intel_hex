@@ -20,4 +20,6 @@ Gem::Specification.new do |s|
   s.required_ruby_version = ">= 3.0"
 
   s.metadata["rubygems_mfa_required"] = "true"
+
+  s.add_dependency "sorbet-runtime"
 end

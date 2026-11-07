@@ -1,19 +1,25 @@
 # frozen_string_literal: true
+# typed: strict
 
 require "intel_hex/record/value_record_uint32"
 
 module IntelHex
   class Record
     class Ssa < ValueRecordUint32
+      extend T::Sig
+
+      sig { override.returns(Integer) }
       def self.type_id
         3
       end
 
+      sig { override.returns(Symbol) }
       def self.type_name
         :ssa
       end
     end
 
+    sig { params(value: T.nilable(Integer)).returns(Ssa) }
     def self.ssa(value = nil)
       record = Ssa.new
       record.value = value if value
