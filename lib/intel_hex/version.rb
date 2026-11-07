@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# typed: strict
 
 module IntelHex
   VERSION = "0.6.2"

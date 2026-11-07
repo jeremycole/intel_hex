@@ -2,15 +2,20 @@ PATH
   remote: .
   specs:
     intel_hex (0.6.2)
+      sorbet-runtime
 
 GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.3)
+    benchmark (0.5.0)
     diff-lcs (1.6.2)
+    erubi (1.13.1)
     json (3.0.2)
     language_server-protocol (3.17.0.6)
     lint_roller (1.1.0)
+    logger (1.7.0)
+    netrc (0.11.0)
     parallel (2.3.0)
     parser (3.3.12.0)
       ast (~> 2.4.1)
@@ -18,7 +23,16 @@ GEM
     prism (1.9.0)
     racc (1.8.1)
     rainbow (3.1.1)
+    rbi (0.5.0)
+      prism (~> 1.0)
+      rbs (>= 4.0.1)
+    rbs (4.2.0)
+      logger
+      prism (>= 1.6.0)
+      tsort
     regexp_parser (2.13.1)
+    require-hooks (0.5.1)
+    rexml (3.4.4)
     rspec (3.13.2)
       rspec-core (~> 3.13.0)
       rspec-expectations (~> 3.13.0)
@@ -51,18 +65,50 @@ GEM
       regexp_parser (>= 2.0)
       rubocop (~> 1.86, >= 1.86.2)
     ruby-progressbar (1.13.0)
+    rubydex (0.4.4-x86_64-darwin)
+    sorbet (0.6.13602)
+      sorbet-static (= 0.6.13602)
+    sorbet-runtime (0.6.13602)
+    sorbet-static (0.6.13602-universal-darwin)
+    sorbet-static-and-runtime (0.6.13602)
+      sorbet (= 0.6.13602)
+      sorbet-runtime (= 0.6.13602)
+    spoom (1.8.13)
+      erubi (>= 1.10.0)
+      prism (>= 0.28.0)
+      rbi (>= 0.4.2)
+      rbs (>= 4.0.0.dev.5)
+      rexml (>= 3.2.6)
+      sorbet-static-and-runtime (>= 0.5.10187)
+      thor (>= 0.19.2)
+    tapioca (0.20.0)
+      benchmark
+      bundler (>= 2.2.25)
+      netrc (>= 0.11.0)
+      parallel (>= 1.21.0)
+      rbi (>= 0.4.1)
+      require-hooks (>= 0.2.2)
+      rubydex (>= 0.1.0.beta10)
+      sorbet-static-and-runtime (>= 0.6.12698)
+      spoom (>= 1.7.16)
+      thor (>= 1.2.0)
+      tsort
+    thor (1.5.0)
+    tsort (0.2.0)
     unicode-display_width (3.3.0)
       unicode-emoji (~> 4.3)
     unicode-emoji (4.3.0)
 
 PLATFORMS
-  ruby
+  x86_64-darwin-24
+  x86_64-darwin-25
 
 DEPENDENCIES
   intel_hex!
   rspec (~> 3.13.0)
   rubocop (~> 1.91.0)
   rubocop-rspec (~> 3.10.2)
+  tapioca
 
 BUNDLED WITH
-   2.5.22
+  4.1.0.beta3
