@@ -31,4 +31,15 @@ RSpec.describe "blink.hex" do # rubocop:disable RSpec/DescribeClass
       expect(records[i].to_ascii).to  eq records[i].line
     end
   end
+
+  it "iterates each byte with address correctly" do
+    blink_hex = File.join(File.join(__dir__, "../../data"), "blink.hex")
+    intel_hex_file = IntelHex::FileReader.new(blink_hex)
+    bytes_with_addresses = intel_hex_file.each_byte_with_address.to_a
+
+    expect(bytes_with_addresses.size).to eq(11 * 16)
+    expect(bytes_with_addresses.map(&:last)).to eq((0..175).to_a)
+    expect(bytes_with_addresses.first).to eq([0x0c, 0x0000])
+    expect(bytes_with_addresses.last).to eq([0xcf, 0x00af])
+  end
 end

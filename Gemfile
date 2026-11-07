@@ -8,6 +8,6 @@ group :development do
   gem "rubocop-rspec", "~> 3.10.2", require: false
 end
 
-gem "tapioca", require: false, :group => [:development, :test]
+gem "tapioca", require: false, group: %i[development test]
 
 gemspec
